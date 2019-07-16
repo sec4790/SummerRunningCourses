@@ -8,8 +8,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Rectangle;
 
 public class userTypeSelectGUI extends JFrame{
+	private JButton studentButton;
 	
 	public userTypeSelectGUI() {
 		
@@ -18,13 +22,40 @@ public class userTypeSelectGUI extends JFrame{
 	UTSpanel.setLayout(new GridLayout(5,1));
 	JLabel UTSlabel = new JLabel("Select User Type:");
 	UTSlabel.setHorizontalAlignment(JLabel.CENTER);
-	JButton studentButton = new JButton();
+	studentButton = new JButton();
+	studentButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+			loginGUI login = new loginGUI();
+			login.setVisible(true);
+		}
+	});
 	studentButton.setText("Student");
 	JButton instructorButton = new JButton();
+	instructorButton.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+		
+		loginGUI login = new loginGUI();
+		login.setVisible(true);
+		}
+	});
 	instructorButton.setText("Instructor");
 	JButton administratorButton = new JButton();
+	administratorButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			loginGUI login = new loginGUI();
+			login.setVisible(true);
+			}	
+		});
+	
 	administratorButton.setText("Administrator");
 	JButton deanButton = new JButton();
+	deanButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			loginGUI login = new loginGUI();
+			login.setVisible(true);
+			}	
+		});
 	deanButton.setText("Dean");
 	UTSpanel.add(UTSlabel);
 
@@ -32,7 +63,7 @@ public class userTypeSelectGUI extends JFrame{
 	UTSpanel.add(instructorButton);
 	UTSpanel.add(administratorButton);
 	UTSpanel.add(deanButton);
-	UTSframe.add(UTSpanel);
+	UTSframe.getContentPane().add(UTSpanel);
 	UTSframe.setSize(400, 600);
 	UTSframe.setLocationRelativeTo(null);
 	UTSframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
