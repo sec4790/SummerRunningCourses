@@ -11,7 +11,9 @@ public class Course {
 	private boolean isFull;
 	private int maxStudents;
 	private Set daysOfWeek;
+	private Set timeOfDay;
 	private int currentStudents;
+	private int numberComputersInRoom;
 	
 	
 	public Course() {
@@ -31,5 +33,11 @@ public class Course {
 		this.isFull = courseIsFull;
 		this.maxStudents = courseMaxStudents;
 	}
+	
+	/**If currentStudent > numberComputersInRoom
+	 * cannot enroll student in that particular class
+	 */
+	
+	/**Is this course offered for the first time?*/
 
 }
