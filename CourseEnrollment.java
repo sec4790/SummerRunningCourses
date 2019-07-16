@@ -1,11 +1,12 @@
 public class CourseEnrollment{
 	
-	String CourseID;
+	String CRN;
 	String studentID;
 	String Instructor;
 	
 	public CourseEnrollment(){
 	
+		
 	}
 	
 	public addCourseID(){
