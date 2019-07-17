@@ -29,12 +29,25 @@ public class InstructorSchedule extends ScheduleSystem{
 	/*****Display schedule methods************/
 	
 	//display what teacher has taught
+	public void displayCoursesTaught() {
+		
+	}
 	
 	//display what teacher is validated to teach
+	public void displayCoursesTeaching() {
+		
+	}
 	
 	//display what classes teacher is offering but is still awaiting validation
+	public void displayCoursesOffered() {
+		
+	}
 	
 	//display a certain student's current or past schedule
+	
+	public void displayStudentSchedule(Student student) {
+		
+	}
 	
 	/*****************************************/
 	
