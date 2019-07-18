@@ -10,15 +10,17 @@ public class Student {
 	int studentID;
 	String email;
 	String phoneNumber;
-	List<Course> schedule = new ArrayList<Course>();
+	List<Course> currentSchedule;
+	List <Course> coursesNeeded = new ArrayList<Course>();
 	static int numClasses;
 	
-	public Student(String name, String year, int studentID, String email, String phoneNumber) {
+	public Student(String name, int studentID) {
 		this.name = name;
-		this.year = year;
+		//this.year = year;
 		this.studentID = studentID;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
+		//this.email = email;
+		//this.phoneNumber = phoneNumber;
+		//this.currentSchedule = new ArrayList<Course>();
 		
 		
 	}
@@ -73,6 +75,17 @@ public class Student {
 	
 	
 	
+	/******Student enroll in class******************/
+	public void enroll(Course c) {
+		if(!currentSchedule.contains(c)) { //as long as it's not already on their schedule
+		//add to current schedule
+		currentSchedule.add(c);
+		}
+		//remove from courses that still need to be taken
+		coursesNeeded.remove(c);
+	}
+	/**************************************************/
+	
 	
 	
 	
@@ -89,13 +102,8 @@ public class Student {
 	
 	public static void main(String[] args) {
 		
-		Student stu1 = new Student("Stephen King", "Freshman", 11223344, "scary@university.edu", "40944444444");
-		System.out.println(stu1);
 		
 	}
 	
-	/**If student has taken class in previous schedule, flag warning or something*/
-	
-	/**Does student meet the prerequisites?*/
 
 }

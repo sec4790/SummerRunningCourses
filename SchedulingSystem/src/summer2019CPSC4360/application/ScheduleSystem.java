@@ -5,7 +5,7 @@ import java.util.*;
 
 import summer2019CPSC4360.userInterface.*;
 
-public class ScheduleSystem {
+public class ScheduleSystem extends Course{
 	
 	public static void main(String[] args) {
 		

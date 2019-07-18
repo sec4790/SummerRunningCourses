@@ -13,9 +13,9 @@ public class Course {
 	private int maxStudents = 25;
 	private Set daysOfWeek;
 	private Set timeOfDay;
-	static int currentStudents = 0;
+	static int numOfStudents = 0;
 	private int numberComputersInRoom = 10;
-	private static ArrayList<Student> students;
+	private static ArrayList<Student> roster;
 	String theseTimes = "hours";
 	String theseDays = "days of the week";
 	
@@ -35,8 +35,15 @@ public class Course {
 		this.name = courseName;
 		this.section = courseSection;
 		this.instructor = instructor;
-		//this.isFull = courseIsFull;
-		//this.maxStudents = courseMaxStudents;
+		this.roster= new ArrayList<Student>();
+	}
+	
+	public Course(String name, int courseCRN) {
+		this.CRN = courseCRN;
+		this.name = name;
+		this.isFull = isFull;
+		this.maxStudents = maxStudents;
+		toString();
 	}
 	
 	/**********Getters and setters***************/
@@ -73,40 +80,45 @@ public class Course {
 		return instructor;
 	}
 	
-	/************************************************/
-	
-	public void addStudent(Student studentID) {
-		if(fullClass(CRN) == true) {
-			System.out.println("Cannot add student. class is full");
-		}
-		else
-			students.add(studentID);
-			currentStudents ++;
+	public int getCourseCapacity() {
+		return maxStudents;
 	}
 	
+	public ArrayList<Student> getRoster(){
+		return roster;
+	}
 	
-	public boolean fullClass(int CRN) {
+	/************************************************/
+	
+	/*****Is the class full?************************/
+	public boolean isFull() {
 		
-		if(currentStudents >= maxStudents || currentStudents >= numberComputersInRoom) 
+		if(roster.size() == maxStudents) {
 			return true;
-	
-		else
-			return false;
+		}
+		return false;
 		
+	}
+	/***********************************************/
+	
+	/******************************************
+	 * Are there enough computers per student?
+	 * @return
+	 */
+	public boolean meetComputerStandards() {
+		if(roster.size() <= numOfStudents) {
+			return true;
+		}
+		return false;
 	}
 	
 	public String toString() {
-		return "Course name : " + getCourseName() + " is taught by " + getInstructor() + " at " + theseTimes + " on " + theseDays;
+		return "Course: " + name;
 	}
 	
 
 	public static void main(String[] args) {
 		
-		/**Messing something up*/
-		
-		Course course = new Course(1234, "CPSC4360", "section2", "Andrei");
-		
-		System.out.println(course);
 		
 	}
 	
