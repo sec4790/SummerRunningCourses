@@ -31,8 +31,6 @@ public class Administrator {
 		//So, if CRN > 0 then the course is exist if it not then return false
 		if (CRN > 0){
 			return true;
-		
-		//else
 		}
 		else return false;
 	}
