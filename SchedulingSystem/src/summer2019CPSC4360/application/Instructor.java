@@ -5,11 +5,13 @@ public class Instructor {
 	private String username;
 	private String password;
 	private String teacherID;
+	private int OfficeNumb;
 	Course course;
 	
-	public Instructor(String name, String teacherID) {
+	public Instructor(String name, String teacherID, int OfficeNumb) {
 		this.name = name;
 		this.teacherID = teacherID;
+		this.OfficeNumb = OfficeNumb;
 		toString();
 	}
 	
@@ -25,6 +27,10 @@ public class Instructor {
 		this.teacherID = teacherID;
 	}
 	
+	public void setOfficeNumb(int OfficeNumb){
+		this.OfficeNumb = OfficeNumb;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -32,25 +38,37 @@ public class Instructor {
 	public String getTeacherID() {
 		return teacherID;
 	}
+	
+	public int getOfficeNumb(){
+		return officeNumb;
+	}
+	
+
 	/*************************************/
 	
 	/******Offer to teach course***********/
+	// I think its just return the CRN because if the instructor is offer it then its just it
+	// We just have to return the course number back.
 	public void offerCourse(Course CRN) {
-		
+		return CRN; 
 	}
 	
 	public String toString() {
-		return "Instructor: " + name  + "\tTeacher ID:" + teacherID;
+		return "Instructor: " + name  + "\tTeacher ID:" + teacherID + "\tOffice Number: " + OfficeNumb;
 	
 	
 	}
 	
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		
 		/**testing
 		 * 
 		 *
 		Instructor ins = new Instructor("Stefan Andrei", "987675");
+=======
+		Instructor ins = new Instructor("Stefan Andrei", "987675", "210");
+>>>>>>> b8e40adf62f636508b1ad6e2b56fd62cbd5fe20b
 		
 		System.out.println(ins);
 		*/
