@@ -46,8 +46,13 @@ public class Instructor {
 	}
 	
 	public static void main(String[] args) {
+		
+		/**testing
+		 * 
+		 *
 		Instructor ins = new Instructor("Stefan Andrei", "987675");
 		
 		System.out.println(ins);
+		*/
 	}
 }

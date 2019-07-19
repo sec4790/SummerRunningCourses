@@ -1,9 +1,12 @@
 package summer2019CPSC4360.application;
 
-public class Administrator {
+import java.util.List;
+
+public class Administrator extends ScheduleSystem{
 
 	String name;
 	String adminID;
+	
 	
 	public Administrator() {
 		
@@ -13,18 +16,25 @@ public class Administrator {
 		this.name = name;
 	}
 	
-	public boolean validateCourse(int CRN) {
-		//if class passes validation standards return true
-		//else
+	public static boolean validateCourse(Course CRN) {
+		
+		Course course = new Course();
+		if(CRN.equals(course))
+			return true;
 		return false;
 	}
 	
-	public void addCourse(int CRN) {
-		if(validateCourse(CRN) == true) {
-			//add course to ScheduleSystem
+	public void addCourse(Course CRN) {
+		if(validateCourse(CRN) == false) {
+			ScheduleSystem.summerICourses.add(CRN);
 		}
 		else
 			return;
 			//do nothing;
+	}
+	
+	public static void main(String[] args) {
+		
+		
 	}
 }

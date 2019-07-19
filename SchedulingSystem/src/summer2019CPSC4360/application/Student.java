@@ -91,7 +91,7 @@ public class Student {
 	
 	/********toString method that returns information on the student*/
 	public String toString() {
-		return "Student name :\t " + getName() + "\nStudent ID: \t" + getStudentID();
+		return getName();
 	}
 	/***********************************************/
 	

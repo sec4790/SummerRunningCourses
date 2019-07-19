@@ -35,12 +35,20 @@ public class StudentSchedule extends ScheduleSystem {
 		previousCourses.add(c);
 	}
 	
+	
+	
 	public static List<Course> getPreviousCourses(){
 		return previousCourses;
 	}
 	
 	public List<Course> getDegreeProgram() {
 		return degreeProgram;
+	}
+	
+	public static List<Course> getNeededCourses(){
+		for(int i = 0; i < degreeProgram.size(); i++)
+			coursesNeeded = (List<Course>) degreeProgram.remove(i);
+		return coursesNeeded;
 	}
 
 /****************Display methods***************/	
@@ -65,43 +73,59 @@ public class StudentSchedule extends ScheduleSystem {
 
 	public static void displayNeededCourses() {
 		
-		for(int i = 0; i < degreeProgram.size(); i++) {
-			coursesNeeded.add(degreeProgram.remove(i));
-		}
-		for(Course c : coursesNeeded) {
-			System.out.println(c);
-		}
-		
-	}
-	/*****************************************/
+		degreeProgram.removeAll(previousCourses);
+		System.out.println(degreeProgram);
 
+	}
+	
 	/**
-	 * Might need some enrollment methods?
+	 * Enroll in class
+	 * @param course
 	 */
 	
-	/**********Testing*************************/
+	public static void addCourseToSchedule(Course course) {
+		while(!currentCourses.contains(course)) { //as long as it's not already on their schedule
+			//add to current schedule
+			currentCourses.add(course);
+			//remove the course from courses needed
+			coursesNeeded.remove(course);
+			}
+
+	}
+	
 	public static void main(String[] args) {
+		/**
+		 * 
+		 * Testing
+		 *
+		StudentSchedule stu = new StudentSchedule(new Student("Joe Smith", 20446907), 20446907);
+	
+		Course course1 = new Course("Math", 101);
+		Course course2 = new Course("Biology", 102);
+		Course course3 = new Course("Programming", 103);
+		Course course4 = new Course("Literature", 104);
 		
-		StudentSchedule stu = new StudentSchedule(new Student(20446907), 20446907);
+		System.out.println("These are the classes needed for graduation");
+		setDegreeProgram(course1);
+		setDegreeProgram(course2);
+		setDegreeProgram(course3);
+		setDegreeProgram(course4);
+		displayDegreeProgram();
 		
-		Course course1 = new Course("Math", 123);
-		Course course2 = new Course("Science", 456);
-		Course course3 = new Course("Literature", 789);
+		System.out.println("The student has already taken:");
+		setPreviousCourses(course1);
+		displayPreviousCourses();
 		
-		//List<Course> degreeProgram = new ArrayList<>();
-		stu.setDegreeProgram(course1);
-		stu.setDegreeProgram(course2);
-		stu.setDegreeProgram(course3);
+		System.out.println("That means the student still needs to take: ");
+		displayNeededCourses();
 		
-		stu.setPreviousCourses(course1);
-		
-		System.out.println("This are the classes I need in all\n");
-		stu.displayDegreeProgram();
-		System.out.println("\nThis is the classes I've already taken\n");
-		stu.displayPreviousCourses();
-		
-		System.out.println("\nSo these are the classes I need to graduate\n");
-		stu.displayNeededCourses();
+		System.out.println("The student wants to add " + course2 + " to his/her schedule");
+		System.out.println("The student's current schedule is: ");
+		displayCurrentCourses();
+		System.out.println("Now let's add that class, so the student's schedule is now...");
+		addCourseToSchedule(course2);
+		displayCurrentCourses();
+		*/
 		
 	}
 

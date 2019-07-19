@@ -6,9 +6,10 @@ public class InstructorSchedule extends ScheduleSystem{
 	
 	Instructor instructor;
 	Course course;
-	List<Course> coursesTaught;
-	List<Course> coursesTeaching;
-	List<Course> coursesOffered;
+	StudentSchedule studentSchedule;
+	static List<Course> coursesTaught;
+	static List<Course> coursesTeaching;
+	static List<Course> coursesOffered;
 	
 	InstructorSchedule(){
 		
@@ -20,18 +21,46 @@ public class InstructorSchedule extends ScheduleSystem{
 		this.coursesTaught = new ArrayList<Course>();
 		this.coursesTeaching = new ArrayList<Course>();
 		this.coursesOffered = new ArrayList<Course>();
+		this.studentSchedule = new StudentSchedule();
 	}
 	
-	/****Offer to teach a course**************/
-	public void offerCourse(Course c) { //set course
-		if(isValidated(c)) {
-			coursesTeaching.add(c);
-		}
-		else
-			System.out.println("Not validated. Speak to administrator");
+	/**
+	 * Getters and setters
+	 * 
+	 * 
+	 */
+	
+	public static void setCoursesTaught(Course c) {
+		coursesTaught.add(c);
 	}
 	
-	/*****Display schedule methods************/
+	public static void setCoursesTeaching(Course c) {
+		coursesTeaching.add(c);
+	}
+	
+	public static void setCoursesOferred(Course c) {
+		coursesOffered.add(c);
+	}
+	
+	public static List<Course> getCoursesTaught(){
+		return coursesTaught;
+	}
+	
+	public static List<Course> getCoursesTeaching(){
+		//if they've gone through the validation process
+		return coursesTeaching;
+	}
+	
+	public static List<Course> getCoursesOffered(){
+		return coursesOffered; //still awaiting validation
+	}
+	
+	
+	/**
+	 * 
+	 * Display methods
+	 * 
+	 * **/
 	
 	//display what teacher has taught
 	public void displayCoursesTaught() {
@@ -54,21 +83,43 @@ public class InstructorSchedule extends ScheduleSystem{
 			System.out.println(c);
 		}
 	}
-	
+	/** Under construction
+	 * 
 	public boolean isValidated(Course c) {
 		Administrator admin = new Administrator();
 	}
+	*/
 	
 	//display a certain student's current or past schedule
 	
-	public void displayStudentSchedule(Student student) {
-		
+	public void displayStudentCurrentSchedule(StudentSchedule studentScheduleContructorParameters) {
+		StudentSchedule.displayCurrentCourses();
 	}
 	
-	/*****************************************/
+	public void displayStudentPreviousSchedule(StudentSchedule studentScheduleContructorParameters) {
+		StudentSchedule.displayPreviousCourses();
+	}
+	
 	
 	
 	public static void main(String[] args) {
+		
+		/**
+		 * 
+		 * Testing
+		 *
+		InstructorSchedule instructor = new InstructorSchedule(new Instructor("Stefan Andrei", "L20446907"));
+		
+		StudentSchedule stu = new StudentSchedule(new Student("Joe Smith", 20446907), 20446907);Course course1 = new Course("Math", 101);
+		Course course2 = new Course("Biology", 102);
+		Course course3 = new Course("Programming", 103);
+		Course course4 = new Course("Literature", 104);
+		
+		stu.addCourseToSchedule(course2);
+		
+		instructor.displayStudentCurrentSchedule(stu);
+		*/
+		
 		
 		
 		

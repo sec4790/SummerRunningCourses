@@ -18,6 +18,7 @@ public class Course {
 	private static ArrayList<Student> roster;
 	String theseTimes = "hours";
 	String theseDays = "days of the week";
+	public static ArrayList<Course> courses;
 	
 	
 	public Course() {
@@ -27,6 +28,7 @@ public class Course {
 		this.instructor = null;
 		this.isFull = false;
 		this.maxStudents = 50;
+		//this.courses = new ArrayList<Course>();
 		toString();
 	}
 	
@@ -46,6 +48,8 @@ public class Course {
 		toString();
 	}
 	
+
+
 	/**********Getters and setters***************/
 	
 	public void setCRN(int CRN) {
@@ -88,6 +92,15 @@ public class Course {
 		return roster;
 	}
 	
+	/**
+	 * Display the students in this course
+	 */
+	public void displayRoster() {
+		for(Student s : roster) {
+			System.out.println(s);
+		}
+	}
+	
 	/************************************************/
 	
 	/*****Is the class full?************************/
@@ -112,10 +125,23 @@ public class Course {
 		return false;
 	}
 	
-	public String toString() {
-		return "Course: " + name;
+	/**
+	 * we can add student to roster IF
+	 * the class is not full
+	 * and there are enough computers for each student
+	 * @param student
+	 */
+	public static void addStudentToCourse(Student student) {
+		//if class not full && enough computers per student
+		roster.add(student);
+		//else give an error message
 	}
 	
+	public String toString() {
+		return getCourseName();
+	}
+	
+
 
 	public static void main(String[] args) {
 		
