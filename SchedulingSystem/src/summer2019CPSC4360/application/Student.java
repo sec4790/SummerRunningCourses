@@ -16,11 +16,11 @@ public class Student {
 	
 	public Student(String name, int studentID) {
 		this.name = name;
-		//this.year = year;
+		this.year = year;
 		this.studentID = studentID;
-		//this.email = email;
-		//this.phoneNumber = phoneNumber;
-		//this.currentSchedule = new ArrayList<Course>();
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.currentSchedule = new ArrayList<Course>();
 		
 		
 	}

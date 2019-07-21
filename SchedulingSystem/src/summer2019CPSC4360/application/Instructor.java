@@ -8,7 +8,7 @@ public class Instructor {
 	private int OfficeNumb;
 	Course course;
 	
-	public Instructor(String name, String teacherID, int OfficeNumb) {
+	public Instructor(String name, String teacherID) {
 		this.name = name;
 		this.teacherID = teacherID;
 		this.OfficeNumb = OfficeNumb;
@@ -40,18 +40,19 @@ public class Instructor {
 	}
 	
 	public int getOfficeNumb(){
-		return officeNumb;
+		return OfficeNumb;
 	}
 	
 
 	/*************************************/
 	
-	/******Offer to teach course***********/
+	/******Offer to teach course**********
 	// I think its just return the CRN because if the instructor is offer it then its just it
 	// We just have to return the course number back.
 	public void offerCourse(Course CRN) {
 		return CRN; 
 	}
+	*/
 	
 	public String toString() {
 		return "Instructor: " + name  + "\tTeacher ID:" + teacherID + "\tOffice Number: " + OfficeNumb;
@@ -60,7 +61,6 @@ public class Instructor {
 	}
 	
 	public static void main(String[] args) {
-<<<<<<< HEAD
 		
 		/**testing
 		 * 

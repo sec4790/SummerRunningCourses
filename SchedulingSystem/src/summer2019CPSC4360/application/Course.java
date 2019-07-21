@@ -1,38 +1,31 @@
 package summer2019CPSC4360.application;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Set;
 
 public class Course {
 	
-	public int CRN;
+	public String CRN;
 	private String name;
 	private String section;
 	private Instructor instructor;
 	private boolean isFull;
-	private int maxStudents = 25;
+	private static int maxStudents = 20;
 	private Set daysOfWeek;
 	private Set timeOfDay;
 	static int numOfStudents = 0;
-	private int numberComputersInRoom = 10;
-	private static ArrayList<Student> roster;
+	private static int numberComputersInRoom = 10;
+	protected static ArrayList<Student> roster;
 	String theseTimes = "hours";
 	String theseDays = "days of the week";
 	public static ArrayList<Course> courses;
 	
 	
 	public Course() {
-		this.CRN = 12345;
-		this.name = "Name_Of_Course";
-		this.section = "Section";
-		this.instructor = null;
-		this.isFull = false;
-		this.maxStudents = 50;
-		//this.courses = new ArrayList<Course>();
-		toString();
+		
 	}
 	
-	public Course(int courseCRN, String courseName, String courseSection, Instructor instructor) {
+	public Course(String courseCRN, String courseName, String courseSection, Instructor instructor) {
 		this.CRN = courseCRN;
 		this.name = courseName;
 		this.section = courseSection;
@@ -40,11 +33,11 @@ public class Course {
 		this.roster= new ArrayList<Student>();
 	}
 	
-	public Course(String name, int courseCRN) {
+	public Course(String name, String courseCRN) {
 		this.CRN = courseCRN;
 		this.name = name;
-		this.isFull = isFull;
 		this.maxStudents = maxStudents;
+		this.roster= new ArrayList<Student>();
 		toString();
 	}
 	
@@ -52,7 +45,7 @@ public class Course {
 
 	/**********Getters and setters***************/
 	
-	public void setCRN(int CRN) {
+	public void setCRN(String CRN) {
 		this.CRN = CRN;
 	}
 	
@@ -68,7 +61,7 @@ public class Course {
 		this.instructor = instructor;
 	}
 	
-	public int getCRN() {
+	public String getCRN() {
 		return CRN;
 	}
 	
@@ -92,6 +85,10 @@ public class Course {
 		return roster;
 	}
 	
+	public static int getRosterSize(Course course) {
+		return roster.size();
+		
+	}
 	/**
 	 * Display the students in this course
 	 */
@@ -101,12 +98,13 @@ public class Course {
 		}
 	}
 	
-	/************************************************/
-	
-	/*****Is the class full?************************/
-	public boolean isFull() {
+	/**
+	 * Is the class full?
+	 * 
+	 * */
+	public static boolean isFull(Course course) {
 		
-		if(roster.size() == maxStudents) {
+		if(getRosterSize(course) >= maxStudents) {
 			return true;
 		}
 		return false;
@@ -114,12 +112,13 @@ public class Course {
 	}
 	/***********************************************/
 	
-	/******************************************
+	/***
+	 * 
 	 * Are there enough computers per student?
 	 * @return
 	 */
-	public boolean meetComputerStandards() {
-		if(roster.size() <= numOfStudents) {
+	public static boolean meetComputerStandards(Course course) {
+		if(getRosterSize(course) <= numberComputersInRoom) {
 			return true;
 		}
 		return false;
@@ -131,21 +130,18 @@ public class Course {
 	 * and there are enough computers for each student
 	 * @param student
 	 */
-	public static void addStudentToCourse(Student student) {
-		//if class not full && enough computers per student
-		roster.add(student);
-		//else give an error message
+	public static void addStudentToRoster(Student student, Course course) {
+	
+		if(!isFull(course) && meetComputerStandards(course))
+			roster.add(student);
+		else
+			System.out.println("Cannot add student to class. Please see administrator for details");
+		
 	}
 	
 	public String toString() {
 		return getCourseName();
 	}
 	
-
-
-	public static void main(String[] args) {
-		
-		
-	}
 	
 }
