@@ -2,7 +2,7 @@ package summer2019CPSC4360.application;
 
 import java.util.List;
 
-public class Administrator extends ScheduleSystem{
+public class Administrator extends User{
 
 	String name;
 	String adminID;
@@ -26,7 +26,7 @@ public class Administrator extends ScheduleSystem{
 	
 	public void addCourse(Course CRN) {
 		if(validateCourse(CRN) == false) {
-			ScheduleSystem.summerICourses.add(CRN);
+			ScheduleSystem.courses.add(CRN);
 		}
 		else
 			return;

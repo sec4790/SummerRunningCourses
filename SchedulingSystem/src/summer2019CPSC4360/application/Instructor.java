@@ -1,6 +1,6 @@
 package summer2019CPSC4360.application;
 
-public class Instructor {
+public class Instructor extends User{
 	private String name;
 	private String username;
 	private String password;
@@ -59,16 +59,14 @@ public class Instructor {
 	
 	
 	}
-	
 	public static void main(String[] args) {
+
 		
 		/**testing
 		 * 
 		 *
 		Instructor ins = new Instructor("Stefan Andrei", "987675");
-=======
 		Instructor ins = new Instructor("Stefan Andrei", "987675", "210");
->>>>>>> b8e40adf62f636508b1ad6e2b56fd62cbd5fe20b
 		
 		System.out.println(ins);
 		*/

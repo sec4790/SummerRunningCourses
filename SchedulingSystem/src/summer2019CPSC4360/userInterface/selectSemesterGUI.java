@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.BrokenBarrierException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,53 +20,50 @@ public class selectSemesterGUI extends JFrame {
 
 	public selectSemesterGUI() {
 		
-		JFrame ssFrame = new JFrame("Scheduling System: Choose Semester");
-		JPanel ssPanel = new JPanel();
-		ssPanel.setLayout(new GridLayout(5,1));
+		this.setTitle("Scheduling System: Choose Semester");
+		JPanel ssMainPanel = new JPanel();
 		JLabel ssLabel = new JLabel("Select Semester:");
 		ssLabel.setVerticalAlignment(SwingConstants.TOP);
 		ssLabel.setHorizontalAlignment(JLabel.CENTER);
-		ssPanel.add(ssLabel);
+		ssMainPanel.add(ssLabel);
+		
+		JPanel ssBtnPanel = new JPanel();
 		JButton btnSummerI = new JButton("Summer I");
 		JButton btnSummerII = new JButton("Summer II");
 		JButton btnSummerIII = new JButton("Summer III");
 		JButton btnChoosePrevious = new JButton("Choose a previous semester course list");
 
-		ssPanel.add(btnSummerI);
+		ssBtnPanel.add(btnSummerI);
 		btnSummerI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				courseDisplayGUI cdGUI = new courseDisplayGUI();
-				cdGUI.setVisible(true);
 				}	
 			});
-		ssPanel.add(btnSummerII);
+		ssBtnPanel.add(btnSummerII);
 		btnSummerII.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				courseDisplayGUI cdGUI = new courseDisplayGUI();
-				cdGUI.setVisible(true);
 				}	
 			});
-		ssPanel.add(btnSummerIII);
-		btnSummerI.addActionListener(new ActionListener() {
+		ssBtnPanel.add(btnSummerIII);
+		btnSummerIII.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				courseDisplayGUI cdGUI = new courseDisplayGUI();
-				cdGUI.setVisible(true);
 				}	
 			});
-		ssPanel.add(btnChoosePrevious);
-		btnSummerI.addActionListener(new ActionListener() {
+		ssBtnPanel.add(btnChoosePrevious);
+		btnChoosePrevious.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				courseDisplayGUI cdGUI = new courseDisplayGUI();
-				cdGUI.setVisible(true);
 				}	
 			});
 		
 		
-		
-		ssFrame.getContentPane().add(ssPanel);
-		ssFrame.setSize(400, 600);
-		ssFrame.setLocationRelativeTo(null);
-		ssFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ssFrame.setVisible(true);
+		getContentPane().add(ssMainPanel, BorderLayout.PAGE_START);
+		getContentPane().add(ssBtnPanel, BorderLayout.CENTER);
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setVisible(true);
 }
 }

@@ -93,6 +93,43 @@ public class StudentSchedule extends ScheduleSystem {
 
 	}
 	
+	public static void main(String[] args) {
+		/**
+		 * 
+		 * Testing
+		 *
+		StudentSchedule stu = new StudentSchedule(new Student("Joe Smith", 20446907), 20446907);
+	
+		Course course1 = new Course("Math", 101);
+		Course course2 = new Course("Biology", 102);
+		Course course3 = new Course("Programming", 103);
+		Course course4 = new Course("Literature", 104);
+		
+		System.out.println("These are the classes needed for graduation");
+		setDegreeProgram(course1);
+		setDegreeProgram(course2);
+		setDegreeProgram(course3);
+		setDegreeProgram(course4);
+		displayDegreeProgram();
+		
+		System.out.println("The student has already taken:");
+		setPreviousCourses(course1);
+		displayPreviousCourses();
+		
+		System.out.println("That means the student still needs to take: ");
+		displayNeededCourses();
+		
+		System.out.println("The student wants to add " + course2 + " to his/her schedule");
+		System.out.println("The student's current schedule is: ");
+		displayCurrentCourses();
+		System.out.println("Now let's add that class, so the student's schedule is now...");
+		addCourseToSchedule(course2);
+		displayCurrentCourses();
+		*/
+		
+	}
+
+	
 	
 
 }

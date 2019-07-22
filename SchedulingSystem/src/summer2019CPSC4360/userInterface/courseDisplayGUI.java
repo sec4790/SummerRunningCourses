@@ -1,52 +1,29 @@
 package summer2019CPSC4360.userInterface;
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
-import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Rectangle;
-import javax.swing.JScrollPane;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.BorderLayout;
-import javax.swing.SwingConstants;
 import javax.swing.JList;
-import java.awt.Color;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
-import javax.swing.JSplitPane;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.ListSelectionModel;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 
 public class courseDisplayGUI extends JFrame{
 	public static String hello = "Hello";
 	
 	public courseDisplayGUI() {
 		
-	JFrame cdFrame = new JFrame("Scheduling System: Display courses");
+	this.setTitle("Scheduling System: Display courses");
 	JPanel cdPanel = new JPanel();
-	cdFrame.getContentPane().add(cdPanel);
+	getContentPane().add(cdPanel);
 	
 	JLabel lblNewLabel = new JLabel("These are the classes:");
 	lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	
 	JList list = new JList();
+	
 	
 	JButton btnAddClass = new JButton("Add class");
 	
@@ -85,9 +62,9 @@ public class courseDisplayGUI extends JFrame{
 	/**End list */
 
 	
-	cdFrame.setSize(400, 600);
-	cdFrame.setLocationRelativeTo(null);
-	cdFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	cdFrame.setVisible(true);	
+	setSize(400, 600);
+	setLocationRelativeTo(null);
+	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	setVisible(true);	
 	}
 }

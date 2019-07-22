@@ -1,74 +1,93 @@
 package summer2019CPSC4360.userInterface;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 
-import com.sun.codemodel.internal.JLabel;
+import summer2019CPSC4360.application.Student;
 
 public class StudentGUI extends JFrame {
+	
+	
+	JEditorPane stuEditorPane;
+	
+	public StudentGUI(Student user) {
 
-	public StudentGUI() {
-		
 		JFrame stuFrame = new JFrame("This is the student's window");
-		JPanel stuPanel = new JPanel();
-		stuPanel.setLayout(new GridLayout(5,2));
-		javax.swing.JLabel stuLabel = new javax.swing.JLabel("Welcome, Student Name, here are your options:");
-		stuLabel.setVerticalAlignment(SwingConstants.TOP);
-		stuLabel.setHorizontalAlignment(javax.swing.JLabel.CENTER);
-		stuPanel.add(stuLabel);
+		JPanel stuMainPanel = new JPanel();
+		JPanel stuButtonPanel = new JPanel();
+		stuButtonPanel.setLayout(new GridBagLayout());
+		JPanel stuContentPanel = new JPanel();
+		JEditorPane stuEditorPane = new JEditorPane();
+		stuEditorPane.setSize(800,600);
+		stuEditorPane.setEditable(false);
+		stuContentPanel.add(stuEditorPane);
+		JLabel stuLabel = new JLabel("Welcome, " + user.getfirstName()  +", here are your options:");
+		stuLabel.setVerticalAlignment(JLabel.TOP);
+		stuLabel.setHorizontalAlignment(JLabel.CENTER);
+		stuMainPanel.add(stuLabel);
 		
-		JButton btnStuInfo = new JButton("Your Student Information");
-		JButton btnViewCourseList = new JButton("View previous or future course schedules");
-		JButton btnClassesTaken = new JButton("View classes you have taken");
-		JButton btnClassesNeeded = new JButton("View classes that you still need to take");
-		JButton btnViewCurrentSchedule = new JButton("View your current schedule");
 		
-		stuPanel.add(btnStuInfo);
+		
+		JButton btnStuInfo = new JButton("View Student Information");
+		JButton btnViewCourseList = new JButton("View Previous Schedules");
+		JButton btnClassesTaken = new JButton("View Previous Courses");
+		JButton btnClassesNeeded = new JButton("View Remaining Required Courses");
+		JButton btnViewCurrentSchedule = new JButton("View Current Schedule");
+
+		stuButtonPanel.add(btnStuInfo);
 		btnStuInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				}	
-			});
-		stuPanel.add(btnViewCourseList);
+				stuEditorPane.setText(user.toString());
+				pack();
+			}
+		});
+		stuButtonPanel.add(btnViewCourseList);
 		btnViewCourseList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectSemesterGUI ssGUI = new selectSemesterGUI();
-				ssGUI.setVisible(true);
-				}	
-			});
-		stuPanel.add(btnClassesTaken);
+			}
+		});
+		stuButtonPanel.add(btnClassesTaken);
 		btnClassesTaken.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//go to classes taken for this student
-				}	
-			});
-		stuPanel.add(btnClassesNeeded);
+				// go to classes taken for this student
+			}
+		});
+		stuButtonPanel.add(btnClassesNeeded);
 		btnClassesNeeded.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			//go to classes needed for this degree plan
-				}	
-			});
-		stuPanel.add(btnViewCurrentSchedule);
+				// go to classes needed for this degree plan
+			}
+		});
+		stuButtonPanel.add(btnViewCurrentSchedule);
 		btnViewCurrentSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				}	
-			});
+
+			}
+		});
 		
-		stuFrame.getContentPane().add(stuPanel);
-		stuFrame.setSize(400, 600);
-		stuFrame.setLocationRelativeTo(null);
-		stuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		stuFrame.setVisible(true);
+		getContentPane().add(stuMainPanel, BorderLayout.PAGE_START);
+		getContentPane().add(stuButtonPanel, BorderLayout.CENTER);
+		getContentPane().add(stuContentPanel, BorderLayout.PAGE_END);
+		
+		pack();
+		
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+
+	private void DisplayStudentInformation() {
+		
 	}
 
 }
